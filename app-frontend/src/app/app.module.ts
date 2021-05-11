@@ -3,21 +3,22 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { ChatService } from './chat.service';
+import { DataService } from './data.service';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ChatService } from './chat.service';
+
 import {
   SocialAuthServiceConfig,
   SocialLoginModule,
   GoogleLoginProvider,
   FacebookLoginProvider,
 } from 'angularx-social-login';
-import { DataService } from './data.service';
 
 import { LoginComponent } from './login/login.component';
+import { Login2Component } from './login2/login2.component';
 import { SignupComponent } from './signup/signup.component';
 import { ChatInboxComponent } from './chat-inbox/chat-inbox.component';
-import { Login2Component } from './login2/login2.component';
 
 // const config = new SocialAuthServiceConfig([
 //   {

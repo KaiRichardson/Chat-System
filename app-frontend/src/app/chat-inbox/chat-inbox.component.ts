@@ -51,7 +51,7 @@ export class ChatInboxComponent implements OnInit {
 
     this.chatService.newMessageReceived().subscribe((data) => {
       this.messageArray.push(data);
-      this.playAudio();
+      // this.playAudio();
       this.typingShow = {};
       this.messageText = '';
     });
