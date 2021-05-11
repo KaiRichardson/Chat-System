@@ -70,12 +70,12 @@ export class ChatInboxComponent implements OnInit {
     this.userName = localStorage.getItem('username');
   }
 
-  playAudio() {
-    const audio = new Audio();
-    audio.src = './assets/msg1.mp3';
-    audio.load();
-    audio.play();
-  }
+  // playAudio() {
+  //   const audio = new Audio();
+  //   audio.src = './assets/msg1.mp3';
+  //   audio.load();
+  //   audio.play();
+  // }
 
   join() {
     this.chatService.joinRoom({ user: this.Name, room: this.room });
