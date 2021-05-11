@@ -14,7 +14,7 @@ const db = require("./config/db");
 var route = require("./routes/api");
 // Mongodb Connection
 mongoose.connect(db.url, function () {
-  console.log("Mongodb connected at www.mlab.com!!");
+  console.log("connected_1");
   /* });
     // Connect to mongodb
     mongoClient.connect( db.url, function(err, database) {
@@ -29,6 +29,7 @@ mongoose.connect(db.url, function () {
   var io = socket(server);
 
   io.on("connection", function (socket) {
+    console.log("connected_2");
     console.log("New connection made!!", socket.id);
     // new user online
     socket.on("new user", function (data) {
@@ -77,22 +78,18 @@ mongoose.connect(db.url, function () {
       //  socket.emit('chat history', docs);
       // });
       console.log(data.user + " Joined the room :- " + data.room);
-      socket.broadcast
-        .to(data.room)
-        .emit("new user joined", {
-          user: data.user,
-          message: "has joined this room!!",
-        });
+      socket.broadcast.to(data.room).emit("new user joined", {
+        user: data.user,
+        message: "has joined this room!!",
+      });
     });
 
     socket.on("leave", function (data) {
       console.log(data.user + " left the room :- " + data.room);
-      socket.broadcast
-        .to(data.room)
-        .emit("left room", {
-          user: data.user,
-          message: "has left this room!!",
-        });
+      socket.broadcast.to(data.room).emit("left room", {
+        user: data.user,
+        message: "has left this room!!",
+      });
       socket.leave(data.room);
       if (data.room == "Email Marketing") {
         socket.nickname1 = data;

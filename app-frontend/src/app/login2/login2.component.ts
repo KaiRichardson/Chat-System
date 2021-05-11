@@ -5,9 +5,9 @@ import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 
 @Component({
-  selector: 'app-second-login',
-  templateUrl: './second-login.component.html',
-  styleUrls: ['./second-login.component.css'],
+  selector: 'app-login2',
+  templateUrl: './login2.component.html',
+  styleUrls: ['./login2.component.scss'],
 })
 export class Login2Component implements OnInit {
   showDialogeBox = false;
