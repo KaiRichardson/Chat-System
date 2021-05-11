@@ -17,7 +17,7 @@ import { DataService } from './data.service';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ChatInboxComponent } from './chat-inbox/chat-inbox.component';
-import { SecondLoginComponent } from './second-login/second-login.component';
+import { Login2Component } from './login2/login2.component';
 
 // const config = new SocialAuthServiceConfig([
 //   {
@@ -40,8 +40,8 @@ import { SecondLoginComponent } from './second-login/second-login.component';
     AppComponent,
     ChatInboxComponent,
     LoginComponent,
-    SecondLoginComponent,
     SignupComponent,
+    Login2Component,
   ],
   imports: [
     BrowserModule,
