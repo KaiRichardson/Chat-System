@@ -6,10 +6,12 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { ChatService } from '../chat.service';
-import { Item } from '../item';
-import { DataService } from '../data.service';
 import { Router } from '@angular/router';
+
+import { ChatService } from '../chat.service';
+import { DataService } from '../data.service';
+
+import { Item } from '../item';
 import { Observable } from 'rxjs';
 
 const SOCKET_ENDPOINT = 'localhost:3000';
