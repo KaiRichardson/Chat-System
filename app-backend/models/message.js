@@ -1,29 +1,40 @@
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-var messageSchema = mongoose.Schema({
-  Name: {
-    type: String,
+// message schema
+const MessageSchema = mongoose.Schema({
+  created: {
+    type: Date,
+    required: true,
   },
-  userName: {
+  from: {
     type: String,
+    required: true,
   },
-  email: {
+  text: {
     type: String,
+    required: true,
   },
-  message: {
+  conversationId: {
     type: String,
+    required: true,
   },
-  room: {
-    type: String,
-  },
-  date: {
-    type: String,
-  },
-  time: {
-    type: String,
+  inChatRoom: {
+    type: Boolean,
+    required: false,
   },
 });
 
-const messages = mongoose.model("messages", messageSchema);
+MessageSchema.statics.addMessage = (message, callback) => {
+  message.save(callback);
+};
 
-module.exports = messages;
+MessageSchema.statics.getMessages = (callback) => {
+  Message.find({}, callback);
+};
+
+MessageSchema.statics.getMessagesByConv = (id, callback) => {
+  Message.find({ conversationId: id }, callback);
+};
+
+const Message = mongoose.model("Message", MessageSchema);
+module.exports = Message;
