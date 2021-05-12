@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { ChatInboxComponent } from './chat-inbox/chat-inbox.component';
+import { ChatInboxComponent } from './components/chat-inbox/chat-inbox.component';
 import { Login2Component } from './login2/login2.component';
 import { SignupComponent } from './signup/signup.component';
 

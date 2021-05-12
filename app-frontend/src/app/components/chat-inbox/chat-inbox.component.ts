@@ -8,10 +8,10 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ChatService } from '../chat.service';
-import { DataService } from '../data.service';
+import { ChatService } from '../../chat.service';
+import { DataService } from '../../data.service';
 
-import { Item } from '../item';
+import { Item } from '../../item';
 import { Observable } from 'rxjs';
 
 const SOCKET_ENDPOINT = 'localhost:3000';

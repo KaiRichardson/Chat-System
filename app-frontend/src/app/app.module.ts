@@ -18,7 +18,7 @@ import {
 import { LoginComponent } from './login/login.component';
 import { Login2Component } from './login2/login2.component';
 import { SignupComponent } from './signup/signup.component';
-import { ChatInboxComponent } from './chat-inbox/chat-inbox.component';
+import { ChatInboxComponent } from './components/chat-inbox/chat-inbox.component';
 
 // const config = new SocialAuthServiceConfig([
 //   {
