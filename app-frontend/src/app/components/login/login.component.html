@@ -1,85 +1,31 @@
 <div class="container">
+  <h2 class="page-header text-center">Login</h2>
 
+  <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
 
-  <div class="omb_login">
-    <h3 class="omb_authTitle">Login or <a href="#">Sign up</a></h3>
-    <div class="row omb_row-sm-offset-3 omb_socialButtons">
-      <div class="col-xs-4 col-sm-2">
-        <button class="btn btn-lg btn-block omb_btn-facebook" (click)="signInWithFB()">
-          <i class="fa fa-facebook visible-xs"></i>
-          <span class="hidden-xs" style="color: white">Facebook</span>
-        </button>
-      </div>
-      <div class="col-xs-4 col-sm-2">
+    <div class="form-group">
+      <label for="username">Username</label>
 
-      </div>
-      <div class="col-xs-4 col-sm-2">
-        <button class="btn btn-lg btn-block omb_btn-google" (click)="signInWithGoogle()">
-          <i class="fa fa-google-plus visible-xs"></i>
-          <span class="hidden-xs" style="color: white">Google+</span>
-
-        </button>
-
-
-      </div>
+      <input type="text" name="username" class="form-control" id="username" placeholder="Enter your username"
+        formControlName="username" autofocus="true">
     </div>
 
-    <div class="row omb_row-sm-offset-3 omb_loginOr">
-      <div class="col-xs-12 col-sm-6">
-        <hr class="omb_hrOr">
-        <span class="omb_spanOr">or</span>
-      </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+
+      <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password"
+        formControlName="password">
+    </div>
+    <!-- [disabled]="loginForm.invalid" -->
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary btn-block" name="login">Login
+      </button>
     </div>
 
-    <div class="row omb_row-sm-offset-3">
-      <div class="col-xs-12 col-sm-6">
-        <form class="omb_loginForm" action="" autocomplete="off" method="POST">
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            <input type="text" class="form-control" name="username" placeholder="email address">
-          </div>
-          <span class="help-block"></span>
-
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-            <input type="password" class="form-control" name="password" placeholder="Password">
-          </div>
-          <span class="help-block">Password error</span>
-
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-        </form>
-      </div>
+    <div class="text-center">
+      <a [routerLink]="['/register']">Don't have an account?</a>
     </div>
-    <div class="row omb_row-sm-offset-3">
-      <div class="col-xs-12 col-sm-3">
-        <label class="checkbox">
-          <input type="checkbox" value="remember-me">Remember Me
-        </label>
-      </div>
-      <div class="col-xs-12 col-sm-3">
-        <p class="omb_forgotPwd">
-          <a href="#">Forgot password?</a>
-        </p>
-      </div>
-    </div>
-  </div>
 
+  </form>
 
-
-</div>
-<div class="container">
-  <div *ngIf="user" class="card text-center">
-    <h6 class="card-header">
-      Social Login Demo
-    </h6>
-    <div class="card-block"></div>
-    <img class="card-img-top img-responsive photo" src="{{ user.photoUrl }}">
-    <div class="card-block">
-      <h4 class="card-title">{{ user.name }}</h4>
-      <p class="card-text">{{ user.email }}</p>
-    </div>
-    <div class="card-block">
-      <button class="btn btn-danger" (click)="signOut()">Sign out</button>
-    </div>
-  </div>
 </div>

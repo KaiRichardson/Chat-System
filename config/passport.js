@@ -5,7 +5,7 @@ const config = require("./index");
 
 module.exports = (passport) => {
   let options = {
-    jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme("jwt"),
+    jwtFromRequest: ExtractJwt.fromAuthHeader(),
     secretOrKey: config.secret,
   };
 

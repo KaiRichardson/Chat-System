@@ -1,78 +1,62 @@
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { RouterModule, Routes } from '@angular/router';
 
-import { ChatService } from './chat.service';
-import { DataService } from './data.service';
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ChatRoomComponent } from './components/chat-room/chat-room.component';
+import { MessageComponent } from './components/message/message.component';
 
-import {
-  SocialAuthServiceConfig,
-  SocialLoginModule,
-  GoogleLoginProvider,
-  FacebookLoginProvider,
-} from 'angularx-social-login';
+import { FlashMessagesModule } from 'angular2-flash-messages';
+import { AuthService } from "./services/auth.service";
+import { AuthGuard } from "./guards/auth.guard";
+import { ChatService } from "./services/chat.service";
+import { ActiveListComponent } from './components/active-list/active-list.component';
 
-import { LoginComponent } from './login/login.component';
-import { Login2Component } from './login2/login2.component';
-import { SignupComponent } from './signup/signup.component';
-import { ChatInboxComponent } from './components/chat-inbox/chat-inbox.component';
-
-// const config = new SocialAuthServiceConfig([
-//   {
-//     id: GoogleLoginProvider.PROVIDER_ID,
-//     provider: new GoogleLoginProvider(
-//       '663302841536-pqlvbekggnmb05301rr9g3r0rm0e44pb.apps.googleusercontent.com'
-//     ),
-//   },
-//   {
-//     id: FacebookLoginProvider.PROVIDER_ID,
-//     provider: new FacebookLoginProvider('524954454603212'),
-//   },
-// ]);
-// export function provideConfig() {
-//   return config;
-// }
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'chat', canActivate: [AuthGuard], children: [
+    { path: ':chatWith', component: ChatRoomComponent },
+    { path: '**', redirectTo: '/chat/chat-room', pathMatch: 'full' }
+  ] },
+  { path: '**', redirectTo: '/', pathMatch: 'full' }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChatInboxComponent,
+    NavbarComponent,
     LoginComponent,
-    SignupComponent,
-    Login2Component,
+    RegisterComponent,
+    HomeComponent,
+    ProfileComponent,
+    ChatRoomComponent,
+    MessageComponent,
+    ActiveListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
-    SocialLoginModule,
-    HttpClientModule,
+    ReactiveFormsModule,
+    HttpModule,
+    FlashMessagesModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    ChatService,
-    DataService,
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              '663302841536-pqlvbekggnmb05301rr9g3r0rm0e44pb.apps.googleusercontent.com'
-            ),
-          },
-          {
-            id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('524954454603212'),
-          },
-        ],
-      } as SocialAuthServiceConfig,
-    },
+    AuthGuard,
+    AuthService,
+    ChatService
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+
+export class AppModule { }
