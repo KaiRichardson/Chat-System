@@ -1,6 +1,6 @@
 ## clone the repo
 
-git clone https://github.com/petr166/mean-chat-app.git
+git clone https://github.com/KaiRichardson/Chat-System.git
 
 ## change into the repo directory
 
