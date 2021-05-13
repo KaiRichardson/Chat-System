@@ -1,9 +1,38 @@
+@font-face {
+  font-family: Britanica-Black;
+  src: url("./assets/fonts/britanica-black.ttf");
+}
+
+.font-head {
+  font-family: Britanica-Black;
+}
+
+@font-face {
+  font-family: CormorantInfant-Regular;
+  src: url("./assets/fonts/CormorantInfant-Regular.ttf");
+}
+
+.font-mid {
+  font-family: CormorantInfant-Light;
+}
+
+@font-face {
+  font-family: Spinnaker-Regular;
+  src: url("./assets/fonts/Spinnaker-Regular.ttf");
+}
+
+.font-p {
+  font-family: Spinnaker-Regular;
+}
+
+html,
+body {
+  max-width: 100vw;
+  font-family: Spinnaker-Regular !important;
+}
+
 .hidden-atw {
   @media only screen and (min-width: 768px) {
     display: none !important;
   }
-}
-
-body {
-  max-width: 100vw;
 }

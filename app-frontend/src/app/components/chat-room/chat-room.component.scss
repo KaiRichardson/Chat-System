@@ -23,13 +23,18 @@
     margin: 0;
     margin-bottom: 4px;
     border: none;
-    @include border-radius-separate($topLeftRadius: 0, $topRightRadius: 0, $bottomLeftRadius: 5px, $bottomRightRadius: 5px)
+    @include border-radius-separate(
+      $topLeftRadius: 0,
+      $topRightRadius: 0,
+      $bottomLeftRadius: 5px,
+      $bottomRightRadius: 5px
+    );
     background-color: lighten(#2c3e50, 20%);
     @include box-shadow($x: 0px, $y: 2px);
 
     span {
       font-size: 12px;
-      color: #BDBDBD;
+      color: #bdbdbd;
     }
 
     button {
@@ -73,7 +78,7 @@
   right: 10px;
   z-index: 3;
   width: 320px;
-  background-color: #E8F5E9;
+  background-color: #e8f5e9;
   border: 2px solid #18bc9c;
   @include border-radius(10px);
   @include box-shadow($x: 0px, $y: 0px);
