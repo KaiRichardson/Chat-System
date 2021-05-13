@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { Component, OnInit } from "@angular/core";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss'],
+  selector: "app-profile",
+  templateUrl: "./profile.component.html",
+  styleUrls: ["./profile.component.scss"],
 })
 export class ProfileComponent implements OnInit {
   user: Object;
@@ -13,10 +13,10 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.authService.getProfile().subscribe(
-      data => {
+      (data) => {
         this.user = data.user;
       },
-      err => {
+      (err) => {
         console.log(err);
         return false;
       }

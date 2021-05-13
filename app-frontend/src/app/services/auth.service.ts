@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Http, Headers, Response, RequestOptions } from '@angular/http';
-import 'rxjs/add/operator/map';
-import { tokenNotExpired } from 'angular2-jwt';
-import { environment } from '../../environments/environment';
+import { Injectable } from "@angular/core";
+import { Http, Headers, Response, RequestOptions } from "@angular/http";
+import "rxjs/add/operator/map";
+import { tokenNotExpired } from "angular2-jwt";
+import { environment } from "../../environments/environment";
 
 const BASE_URL = environment.backendUrl;
 
@@ -16,10 +16,10 @@ export class AuthService {
   constructor(public http: Http) {}
 
   registerUser(user): any {
-    let url: string = this.apiUrl + '/register';
+    let url: string = this.apiUrl + "/register";
 
     // prepare the request
-    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let headers = new Headers({ "Content-Type": "application/json" });
     let options = new RequestOptions({ headers: headers });
     let reqBody = user;
 
@@ -32,10 +32,10 @@ export class AuthService {
   }
 
   authenticateUser(user): any {
-    let url: string = this.apiUrl + '/authenticate';
+    let url: string = this.apiUrl + "/authenticate";
 
     // prepare the request
-    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let headers = new Headers({ "Content-Type": "application/json" });
     let options = new RequestOptions({ headers: headers });
     let reqBody = user;
 
@@ -48,12 +48,12 @@ export class AuthService {
   }
 
   getProfile(): any {
-    let url: string = this.apiUrl + '/profile';
+    let url: string = this.apiUrl + "/profile";
     this.loadCredentials();
 
     // prepare the request
     let headers = new Headers({
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       Authorization: this.authToken,
     });
     let options = new RequestOptions({ headers: headers });
@@ -65,8 +65,8 @@ export class AuthService {
   }
 
   storeUserData(token, user): void {
-    localStorage.setItem('token', token);
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem("token", token);
+    localStorage.setItem("user", JSON.stringify(user));
     this.authToken = token;
     this.user = user;
   }
@@ -80,8 +80,8 @@ export class AuthService {
   }
 
   loadCredentials(): void {
-    let token = localStorage.getItem('token');
-    let user = localStorage.getItem('user');
+    let token = localStorage.getItem("token");
+    let user = localStorage.getItem("user");
     this.authToken = token;
     this.user = user;
   }

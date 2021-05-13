@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Http, Headers, Response, RequestOptions } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs/Observable";
+import { Http, Headers, Response, RequestOptions } from "@angular/http";
+import "rxjs/add/operator/map";
 
-import * as io from 'socket.io-client';
-import { Message } from '../models/message.model';
-import { AuthService } from './auth.service';
-import { environment } from '../../environments/environment';
+import * as io from "socket.io-client";
+import { Message } from "../models/message.model";
+import { AuthService } from "./auth.service";
+import { environment } from "../../environments/environment";
 
 @Injectable()
 export class ChatService {
@@ -20,15 +20,15 @@ export class ChatService {
     // initialize the connection
     this.socket = io(environment.chatUrl, { path: environment.chatPath });
 
-    this.socket.on('error', error => {
-      console.log('====================================');
+    this.socket.on("error", (error) => {
+      console.log("====================================");
       console.log(error);
-      console.log('====================================');
+      console.log("====================================");
     });
 
-    this.socket.on('connect', () => {
+    this.socket.on("connect", () => {
       this.sendUser(username);
-      console.log('connected to the chat server');
+      console.log("connected to the chat server");
       callback();
     });
   }
@@ -42,7 +42,7 @@ export class ChatService {
   }
 
   sendUser(username: string): void {
-    this.socket.emit('username', { username: username });
+    this.socket.emit("username", { username: username });
   }
 
   disconnect(): void {
@@ -51,8 +51,8 @@ export class ChatService {
 
   getConversation(name1: string, name2: string): any {
     let url = this.apiUrl;
-    if (name2 != 'chat-room') {
-      let route = '/' + name1 + '/' + name2;
+    if (name2 != "chat-room") {
+      let route = "/" + name1 + "/" + name2;
       url += route;
     }
 
@@ -60,7 +60,7 @@ export class ChatService {
 
     // prepare the request
     let headers = new Headers({
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       Authorization: authToken,
     });
     let options = new RequestOptions({ headers: headers });
@@ -78,7 +78,7 @@ export class ChatService {
 
     // prepare the request
     let headers = new Headers({
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       Authorization: authToken,
     });
     let options = new RequestOptions({ headers: headers });
@@ -90,8 +90,8 @@ export class ChatService {
   }
 
   receiveMessage(): any {
-    let observable = new Observable(observer => {
-      this.socket.on('message', (data: Message) => {
+    let observable = new Observable((observer) => {
+      this.socket.on("message", (data: Message) => {
         observer.next(data);
       });
     });
@@ -100,8 +100,8 @@ export class ChatService {
   }
 
   receiveActiveList(): any {
-    let observable = new Observable(observer => {
-      this.socket.on('active', data => {
+    let observable = new Observable((observer) => {
+      this.socket.on("active", (data) => {
         observer.next(data);
       });
     });
@@ -110,11 +110,11 @@ export class ChatService {
   }
 
   sendMessage(message: Message, chatWith: string): void {
-    this.socket.emit('message', { message: message, to: chatWith });
+    this.socket.emit("message", { message: message, to: chatWith });
   }
 
   getActiveList(): void {
-    this.socket.emit('getactive');
+    this.socket.emit("getactive");
   }
 
   extractData(res: Response): any {
